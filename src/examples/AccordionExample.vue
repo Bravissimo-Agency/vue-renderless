@@ -1,67 +1,62 @@
 <template>
     <Accordion
-        v-slot:default="{ isOpen, toggle, slideDown, slideUp }"
+        v-slot:default="{ isOpen, toggle }"
     >
-        <div class="accordion">
-            <button
-                class="toggle__header"
-                type="button"
-                @click="toggle"
-            >
-                <h3 class="toggle__heading">
+        <div
+            :class="{ 'isOpen': isOpen }"
+            class="accordion"
+        >
+            <AccordionHeader @click="toggle">
+                <h3 class="accordion__heading">
                     Min rubrik
                 </h3>
 
-                <div class="toggle__triangle">
+                <div class="accordion__triangle">
                     >
                 </div>
-            </button>
+            </AccordionHeader>
 
-            <transition
-                @enter="slideDown"
-                @leave="slideUp"
-            >
-                <div
-                    v-show="isOpen"
-                    class="toggle__contentHolder"
-                    style="display: none"
-                >
-                    <div class="toggle__content content">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
-                        </p>
-                    </div>
+            <AccordionBody :is-open="isOpen">
+                <div class="accordion__content content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
+                    </p>
                 </div>
-            </transition>
+            </AccordionBody>
         </div>
     </Accordion>
 </template>
 
 <script>
 import Accordion from '@/components/accordion/Accordion';
+import AccordionHeader from '@/components/accordion/AccordionHeader';
+import AccordionBody from '@/components/accordion/AccordionBody';
 
 export default {
     components: {
-        Accordion
+        Accordion,
+        AccordionHeader,
+        AccordionBody
     }
 };
 </script>
 
 <style lang="postcss" scoped>
-:root {
+.accordion {
   --slowTrans: 0.35s;
+  --primaryColor: orange;
 }
 
-.toggle__header {
+.accordion__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,58 +65,37 @@ export default {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  @media (--tablet) {
-    padding: 16px 0;
-  }
-  @media (--mobile) {
-    padding: 11px 0;
-  }
 }
 
-.toggle__heading {
+.accordion__heading {
   width: calc(100% - 50px);
   transition: var(--normalTrans);
-  @media (--mobile) {
-    font-size: 18px;
-    width: calc(100% - 40px);
-  }
 }
 
-.toggle__triangle {
+.accordion__triangle {
   width: 17px;
   height: 15px;
   color: var(--primaryColor);
   transform: rotate(0.25turn);
   transition: var(--slowTrans);
-  @media (--mobile) {
-    width: calc(17px * 0.85);
-    height: calc(15px * 0.85);
-  }
 }
 
-.toggle__triangle svg {
+.accordion__triangle svg {
   width: 100%;
   height: 100%;
 }
 
-.toggle__contentHolder {
-  overflow: hidden;
-}
-
-.toggle__content {
+.accordion__content {
   padding: 35px 0 35px;
   border-bottom: 1px solid #d5dfe3;
-  @media (--tablet) {
-    padding: 25px 0;
-  }
 }
 
-.toggle.isOpen .toggle__triangle {
+.accordion.isOpen .accordion__triangle {
   transform: rotate(0.75turn);
 }
 
-.toggle__header:hover .toggle__heading,
-.toggle.isOpen .toggle__heading {
+.accordion__header:hover .accordion__heading,
+.accordion.isOpen .accordion__heading {
   color: var(--primaryColor);
 }
 </style>
