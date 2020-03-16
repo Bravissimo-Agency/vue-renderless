@@ -56,7 +56,7 @@ export default {
   --primaryColor: orange;
 }
 
-.accordion__header {
+.accordionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;

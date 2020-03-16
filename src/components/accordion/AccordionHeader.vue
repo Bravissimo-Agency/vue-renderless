@@ -1,6 +1,6 @@
 <template>
     <button
-        class="accordion__header"
+        class="accordionHeader"
         type="button"
         @click="$emit('click')"
     >

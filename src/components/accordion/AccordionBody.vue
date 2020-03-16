@@ -5,7 +5,7 @@
     >
         <div
             v-show="isOpen"
-            class="toggle__contentHolder"
+            class="accordionBody"
             style="overflow: hidden"
         >
             <slot />
