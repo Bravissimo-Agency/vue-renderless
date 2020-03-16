@@ -1,5 +1,6 @@
 <template>
     <button
+        :aria-expanded="isOpen.toString()"
         class="accordionHeader"
         type="button"
         @click="$emit('click')"
@@ -10,6 +11,11 @@
 
 <script>
 export default {
-
+    props: {
+        isOpen: {
+            type: Boolean,
+            required: true
+        }
+    }
 };
 </script>

@@ -5,6 +5,8 @@
     >
         <div
             v-show="isOpen"
+            :hidden="isHidden"
+            role="region"
             class="accordionBody"
             style="overflow: hidden"
         >
@@ -25,6 +27,24 @@ export default {
             default: 350
         }
     },
+
+    data: () => ({
+        isHidden: true
+    }),
+
+    watch: {
+        isOpen () {
+            if (this.isOpen) {
+                this.isHidden = false;
+                return;
+            }
+
+            setTimeout(() => {
+                this.isHidden = !this.isOpen;
+            }, this.transition);
+        }
+    },
+
     methods: {
         slideDown (el, done) {
             el.style.transition = `${this.transition}ms`;

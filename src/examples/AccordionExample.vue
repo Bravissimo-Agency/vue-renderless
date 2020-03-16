@@ -1,12 +1,18 @@
 <template>
     <Accordion
-        v-slot:default="{ isOpen, toggle }"
+        id="test"
+        v-slot:default="{ isOpen, toggle, headerId, bodyId }"
     >
         <div
             :class="{ 'isOpen': isOpen }"
             class="accordion"
         >
-            <AccordionHeader @click="toggle">
+            <AccordionHeader
+                :id="headerId"
+                :is-open="isOpen"
+                :aria-controls="bodyId"
+                @click="toggle"
+            >
                 <h3 class="accordion__heading">
                     Min rubrik
                 </h3>
@@ -16,7 +22,11 @@
                 </div>
             </AccordionHeader>
 
-            <AccordionBody :is-open="isOpen">
+            <AccordionBody
+                :id="bodyId"
+                :aria-labelledby="headerId"
+                :is-open="isOpen"
+            >
                 <div class="accordion__content content">
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint dolores commodi laudantium ducimus. Eum quaerat molestiae at, odit architecto perspiciatis cumque impedit vitae quas iste, explicabo, sed dolores aliquam minima.
