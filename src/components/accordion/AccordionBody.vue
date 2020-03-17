@@ -22,6 +22,7 @@ export default {
             type: Boolean,
             required: true
         },
+
         transition: {
             type: Number,
             default: 350
