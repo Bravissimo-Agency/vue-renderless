@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <AccordionExample />
+        <SelectExample />
     </div>
 </template>
 
 <script>
-import AccordionExample from './examples/AccordionExample';
+import SelectExample from './examples/SelectExample';
 
 export default {
     components: {
-        AccordionExample
+        SelectExample
     }
 };
 </script>
