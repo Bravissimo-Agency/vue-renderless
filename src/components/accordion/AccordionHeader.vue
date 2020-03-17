@@ -1,7 +1,6 @@
 <template>
     <button
         :aria-expanded="isOpen.toString()"
-        class="accordionHeader"
         type="button"
         @click="$emit('click')"
     >

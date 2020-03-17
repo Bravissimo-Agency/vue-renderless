@@ -6,7 +6,6 @@
         <div
             v-show="isOpen"
             role="region"
-            class="accordionBody"
             style="overflow: hidden"
             hidden
         >

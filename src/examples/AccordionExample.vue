@@ -11,6 +11,7 @@
                 :id="headerId"
                 :is-open="isOpen"
                 :aria-controls="bodyId"
+                class="accordion__header"
                 @click="toggle"
             >
                 <h3 class="accordion__heading">
@@ -26,6 +27,7 @@
                 :id="bodyId"
                 :aria-labelledby="headerId"
                 :is-open="isOpen"
+                class="accordion__body"
             >
                 <div class="accordion__content content">
                     <p>
@@ -66,7 +68,7 @@ export default {
     --primaryColor: orange;
 }
 
-.accordionHeader {
+.accordion__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
