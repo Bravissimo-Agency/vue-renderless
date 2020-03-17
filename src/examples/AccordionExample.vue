@@ -62,50 +62,50 @@ export default {
 
 <style lang="postcss" scoped>
 .accordion {
-  --slowTrans: 0.35s;
-  --primaryColor: orange;
+    --slowTrans: 0.35s;
+    --primaryColor: orange;
 }
 
 .accordionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #d5dfe3;
-  padding: 21px 0;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d5dfe3;
+    padding: 21px 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
 }
 
 .accordion__heading {
-  width: calc(100% - 50px);
-  transition: var(--normalTrans);
+    width: calc(100% - 50px);
+    transition: var(--normalTrans);
 }
 
 .accordion__triangle {
-  width: 17px;
-  height: 15px;
-  color: var(--primaryColor);
-  transform: rotate(0.25turn);
-  transition: var(--slowTrans);
+    width: 17px;
+    height: 15px;
+    color: var(--primaryColor);
+    transform: rotate(0.25turn);
+    transition: var(--slowTrans);
 }
 
 .accordion__triangle svg {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .accordion__content {
-  padding: 35px 0 35px;
-  border-bottom: 1px solid #d5dfe3;
+    padding: 35px 0 35px;
+    border-bottom: 1px solid #d5dfe3;
 }
 
 .accordion.isOpen .accordion__triangle {
-  transform: rotate(0.75turn);
+    transform: rotate(0.75turn);
 }
 
 .accordion__header:hover .accordion__heading,
 .accordion.isOpen .accordion__heading {
-  color: var(--primaryColor);
+    color: var(--primaryColor);
 }
 </style>
