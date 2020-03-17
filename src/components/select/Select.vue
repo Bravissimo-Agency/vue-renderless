@@ -26,6 +26,14 @@ export default {
         }
     },
 
+    mounted () {
+        document.addEventListener('keydown', this.keyListener);
+    },
+
+    beforeDestroy () {
+        document.removeEventListener('keydown', this.keyListener);
+    },
+
     methods: {
         toggle () {
             this.isOpen = !this.isOpen;
@@ -34,6 +42,14 @@ export default {
         selectItem (item) {
             this.$emit('change', item.value);
             this.isOpen = false;
+        },
+
+        keyListener (event) {
+            if (!this.isOpen) { return; }
+
+            if (event.keyCode === 27) {
+                this.isOpen = false;
+            }
         }
     },
 
