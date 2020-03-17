@@ -1,20 +1,20 @@
 <template>
     <div id="app">
-        <TabsExample />
+        <AccordionExample />
     </div>
 </template>
 
 <script>
-import TabsExample from './examples/TabsExample';
+import AccordionExample from './examples/AccordionExample';
 
 export default {
     components: {
-        TabsExample
+        AccordionExample
     }
 };
 </script>
 
-<style>
+<style lang="postcss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,5 +22,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>
