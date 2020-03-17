@@ -1,14 +1,16 @@
 <template>
     <Select
-        v-slot:default="{ isOpen, toggle, selectItem, activeItem }"
+        id="my-select"
+        v-slot:default="{ isOpen, toggle, selectItem, activeItem, buttonId, listId }"
         v-model="active"
         :items="items"
     >
         <div class="select">
             <button
-                id="exp_button"
+                :id="buttonId"
+                :aria-labelledby="buttonId"
+                :aria-expanded="isOpen.toString()"
                 aria-haspopup="listbox"
-                aria-labelledby="exp_elem exp_button"
                 type="button"
                 @click="toggle"
             >
@@ -17,15 +19,16 @@
 
             <ul
                 v-show="isOpen"
-                id="exp_elem_list"
+                :id="listId"
+                :aria-labelledby="buttonId"
                 tabindex="-1"
                 role="listbox"
-                aria-labelledby="exp_elem"
                 class="hidden"
             >
                 <li
                     v-for="item in items"
                     :key="item.value"
+                    :aria-selected="item === activeItem"
                     role="options"
                     @click="selectItem(item)"
                 >

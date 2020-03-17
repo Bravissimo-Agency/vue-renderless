@@ -6,10 +6,16 @@ export default {
     },
 
     props: {
+        id: {
+            type: String,
+            required: true
+        },
+
         items: {
             type: Array,
             required: true
         },
+
         active: {
             type: [Number, String, Boolean],
             default: null
@@ -23,6 +29,14 @@ export default {
     computed: {
         activeItem () {
             return this.items.find(item => item.value === this.active);
+        },
+
+        buttonId () {
+            return `${this.id}__button`;
+        },
+
+        listId () {
+            return `${this.id}__list`;
         }
     },
 
@@ -59,7 +73,9 @@ export default {
             toggle: this.toggle,
             items: this.items,
             selectItem: this.selectItem,
-            activeItem: this.activeItem
+            activeItem: this.activeItem,
+            buttonId: this.buttonId,
+            listId: this.listId
         });
     }
 };
