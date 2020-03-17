@@ -5,10 +5,10 @@
     >
         <div
             v-show="isOpen"
-            :hidden="isHidden"
             role="region"
             class="accordionBody"
             style="overflow: hidden"
+            hidden
         >
             <slot />
         </div>
@@ -28,27 +28,11 @@ export default {
         }
     },
 
-    data: () => ({
-        isHidden: true
-    }),
-
-    watch: {
-        isOpen () {
-            if (this.isOpen) {
-                this.isHidden = false;
-                return;
-            }
-
-            setTimeout(() => {
-                this.isHidden = !this.isOpen;
-            }, this.transition);
-        }
-    },
-
     methods: {
         slideDown (el, done) {
             el.style.transition = `${this.transition}ms`;
             el.style.height = 0;
+            el.hidden = false;
 
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
@@ -72,6 +56,7 @@ export default {
             });
 
             setTimeout(() => {
+                el.hidden = true;
                 done();
             }, this.transition);
         }
